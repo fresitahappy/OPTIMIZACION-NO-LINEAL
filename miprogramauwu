@@ -1,0 +1,92 @@
+import tkinter as tk
+from tkinter import messagebox
+import sympy as sp
+
+
+def solve_exercise1():
+    solution = (
+        "La función f(x) = 3x + 2 es convexa en R porque:\n"
+        "1. Es una función lineal, y todas las funciones lineales son tanto convexas como cóncavas.\n"
+        "2. Su segunda derivada es f''(x) = 0, que cumple la condición de convexidad (f''(x) >= 0)."
+    )
+    messagebox.showinfo("Ejercicio 1", solution)
+
+
+def solve_exercise2():
+    x = sp.symbols('x')
+    f = x**3
+    second_derivative = sp.diff(f, x, 2)
+    solution = (
+        f"f(x) = x^3\n"
+        f"Segunda derivada: f''(x) = {second_derivative}\n"
+        f"En [0, ∞), f''(x) >= 0, por lo que la función es convexa en ese intervalo."
+    )
+    messagebox.showinfo("Ejercicio 2", solution)
+
+
+def solve_exercise3():
+    x = sp.symbols('x')
+    f = sp.exp(2 * x)
+    second_derivative = sp.diff(f, x, 2)
+    solution = (
+        f"f(x) = e^(2x)\n"
+        f"Segunda derivada: f''(x) = {second_derivative}\n"
+        f"Para todo x en R, f''(x) > 0. Por lo tanto, f(x) es convexa en R."
+    )
+    messagebox.showinfo("Ejercicio 3", solution)
+
+
+def solve_exercise4():
+    x = sp.symbols('x')
+    f = sp.ln(x)
+    second_derivative = sp.diff(f, x, 2)
+    solution = (
+        f"f(x) = ln(x)\n"
+        f"Segunda derivada: f''(x) = {second_derivative}\n"
+        f"En (0, ∞), f''(x) < 0, lo que indica que la función es cóncava en su dominio."
+    )
+    messagebox.showinfo("Ejercicio 4", solution)
+
+
+def solve_exercise5():
+    x = sp.symbols('x')
+    f = x**4 - 2 * x**2 + 1
+    second_derivative = sp.diff(f, x, 2)
+    inflection_points = sp.solve(second_derivative, x)
+    solution = (
+        f"f(x) = x^4 - 2x^2 + 1\n"
+        f"Segunda derivada: f''(x) = {second_derivative}\n"
+        f"Puntos de inflexión: {inflection_points}\n"
+        f"Convexa en (-∞, -sqrt(3)/3) ∪ (sqrt(3)/3, ∞).\n"
+        f"Cóncava en (-sqrt(3)/3, sqrt(3)/3)."
+    )
+    messagebox.showinfo("Ejercicio 5", solution)
+
+
+# Crear ventana principal
+root = tk.Tk()
+root.title("Resolución de Ejercicios de Optimización")
+root.geometry("400x300")
+
+# Etiqueta de título
+title_label = tk.Label(root, text="Seleccione un ejercicio para resolver", font=("Arial", 14))
+title_label.pack(pady=10)
+
+# Botones para cada ejercicio
+exercise1_btn = tk.Button(root, text="Ejercicio 1", command=solve_exercise1, width=20)
+exercise1_btn.pack(pady=5)
+
+exercise2_btn = tk.Button(root, text="Ejercicio 2", command=solve_exercise2, width=20)
+exercise2_btn.pack(pady=5)
+
+exercise3_btn = tk.Button(root, text="Ejercicio 3", command=solve_exercise3, width=20)
+exercise3_btn.pack(pady=5)
+
+exercise4_btn = tk.Button(root, text="Ejercicio 4", command=solve_exercise4, width=20)
+exercise4_btn.pack(pady=5)
+
+exercise5_btn = tk.Button(root, text="Ejercicio 5", command=solve_exercise5, width=20)
+exercise5_btn.pack(pady=5)
+
+# Ejecutar la aplicación
+root.mainloop()
